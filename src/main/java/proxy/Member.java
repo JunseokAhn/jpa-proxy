@@ -8,7 +8,11 @@ public class Member {
     @Column(name = "MEMBER_ID")
     private Long id;
     private String name;
-    @ManyToOne
+
+    //@ManyToOne(fetch = FetchType.LAZY)를 설정하면, team을 프록시로 가져오게된다 == 지연로딩
+//    @ManyToOne(fetch = FetchType.LAZY)
+    //@ManyToOne(fetch = FetchType.EAGER)를 설정하면, team을 가져오게된다 == 즉시로딩 == 디폴트
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "TEAM_ID")
     private Team team;
 
